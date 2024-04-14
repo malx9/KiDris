@@ -5,7 +5,7 @@ const LoginPage = () => {
         <h1 className="text-[3rem]">KiDris</h1>
         <h2>made for small restaurants</h2>
       </div>
-      <div className="app-login flex justify-center items-center mt-5">
+      <div className="app-login flex justify-center items-center">
         <form action="" className="mt-2 flex flex-col lg:w-1/2 w-8/12">
           <div className="flex flex-wrap w-full relative h-15 bg-white items-center rounded mb-6 pr-10">
             <div className="flex -mr-px justify-center w-15 p-4">
@@ -38,14 +38,11 @@ const LoginPage = () => {
           </div>
           <a
             href="/"
-            className="bg-blue-400 py-4 text-center px-17 md:px-12 md:py-4 text-white rounded leading-tight text-xl md:text-base font-sans mt-4 mb-7"
+            className="bg-blue-400 py-4 text-center px-17 md:px-12 md:py-4 text-white rounded leading-tight text-xl md:text-base font-sans mt-4 mb-20"
           >
             Login
           </a>
         </form>
-      </div>
-      <div className="picture flex justify-center">
-        <img src="src/assets/picture.png" className="h-[300px]"></img>
       </div>
     </>
   );

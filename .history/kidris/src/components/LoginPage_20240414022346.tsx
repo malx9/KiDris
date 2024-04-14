@@ -27,7 +27,7 @@ const LoginPage = () => {
             </div>
             <input
               type="password"
-              className="flex-shrink flex-grow leading-normal w-px flex-1 border-0 h-10 px-3 relative self-center font-roboto text-xl outline-none"
+              className="flex-shrink flex-grow leading-normal w-px flex-1 border-0 h-10 px-3 relative font-roboto text-xl outline-none"
               placeholder="Password"
             />
             <div className="flex -mr-px">
@@ -38,14 +38,11 @@ const LoginPage = () => {
           </div>
           <a
             href="/"
-            className="bg-blue-400 py-4 text-center px-17 md:px-12 md:py-4 text-white rounded leading-tight text-xl md:text-base font-sans mt-4 mb-7"
+            className="bg-blue-400 py-4 text-center px-17 md:px-12 md:py-4 text-white rounded leading-tight text-xl md:text-base font-sans mt-4 mb-20"
           >
             Login
           </a>
         </form>
-      </div>
-      <div className="picture flex justify-center">
-        <img src="src/assets/picture.png" className="h-[300px]"></img>
       </div>
     </>
   );

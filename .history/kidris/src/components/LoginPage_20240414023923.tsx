@@ -6,7 +6,7 @@ const LoginPage = () => {
         <h2>made for small restaurants</h2>
       </div>
       <div className="app-login flex justify-center items-center mt-5">
-        <form action="" className="mt-2 flex flex-col lg:w-1/2 w-8/12">
+        <form action="" className="mt-2 flex flex-col lg:w-1/2 w-5">
           <div className="flex flex-wrap w-full relative h-15 bg-white items-center rounded mb-6 pr-10">
             <div className="flex -mr-px justify-center w-15 p-4">
               <span className="flex items-center leading-normal bg-white px-3 border-0 rounded rounded-r-none text-2xl text-gray-600">
@@ -38,7 +38,7 @@ const LoginPage = () => {
           </div>
           <a
             href="/"
-            className="bg-blue-400 py-4 text-center px-17 md:px-12 md:py-4 text-white rounded leading-tight text-xl md:text-base font-sans mt-4 mb-7"
+            className="bg-blue-400 py-4 text-center px-17 md:px-12 md:py-4 text-white rounded leading-tight text-xl md:text-base font-sans mt-4 mb-20"
           >
             Login
           </a>

@@ -38,7 +38,7 @@ const LoginPage = () => {
           </div>
           <a
             href="/"
-            className="bg-blue-400 py-4 text-center px-17 md:px-12 md:py-4 text-white rounded leading-tight text-xl md:text-base font-sans mt-4 mb-7"
+            className="bg-blue-400 py-4 text-center px-17 md:px-12 md:py-4 text-white rounded leading-tight text-xl md:text-base font-sans mt-4 mb-10"
           >
             Login
           </a>

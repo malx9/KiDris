@@ -38,14 +38,14 @@ const LoginPage = () => {
           </div>
           <a
             href="/"
-            className="bg-blue-400 py-4 text-center px-17 md:px-12 md:py-4 text-white rounded leading-tight text-xl md:text-base font-sans mt-4 mb-7"
+            className="bg-blue-400 py-4 text-center px-17 md:px-12 md:py-4 text-white rounded leading-tight text-xl md:text-base font-sans mt-4 mb-20"
           >
             Login
           </a>
         </form>
       </div>
-      <div className="picture flex justify-center">
-        <img src="src/assets/picture.png" className="h-[300px]"></img>
+      <div className="picture">
+        <img src="src/assets/picture.png" className="h-[400px]"></img>
       </div>
     </>
   );
