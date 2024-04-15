@@ -7,7 +7,7 @@ const LoginPage = () => {
       </div>
       <div className="login-wrapper app-login flex justify-center items-center mt-2">
         <form action="" className="login-form flex flex-col lg:w-1/2 w-8/12">
-          <div className="flex flex-col gap-2">
+          <div className="gap-2">
             <div className="login-username flex flex-col gap-1">
               <h6 className="font-inter text-[#73008F] text-[.8125rem]">
                 Username

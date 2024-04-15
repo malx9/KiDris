@@ -7,19 +7,15 @@ const LoginPage = () => {
       </div>
       <div className="login-wrapper app-login flex justify-center items-center mt-2">
         <form action="" className="login-form flex flex-col lg:w-1/2 w-8/12">
-          <div className="flex flex-col gap-2">
-            <div className="login-username flex flex-col gap-1">
-              <h6 className="font-inter text-[#73008F] text-[.8125rem]">
-                Username
-              </h6>
-              <input type="text" className="rounded-[3px] h-[45px]"></input>
-            </div>
-            <div className="login-password flex flex-col gap-1">
-              <h6 className="font-inter text-[#73008F] text-[.8125rem]">
-                Password
-              </h6>
-              <input type="text" className="rounded-[3px] h-[45px]"></input>
-            </div>
+          <div className="login-username flex flex-col gap-1">
+            <h6 className="font-inter text-[#73008F] text-[.8125rem]">
+              Username
+            </h6>
+            <input type="text" className="rounded-lg"></input>
+          </div>
+          <div className="login-password flex flex-col gap-4">
+            <h6>Password</h6>
+            <input type="text"></input>
           </div>
         </form>
       </div>
