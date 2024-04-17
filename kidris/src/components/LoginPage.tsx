@@ -39,11 +39,16 @@ const LoginPage = () => {
                 onClick={togglePasswordVisibility}
               ></i>
             </div>
+            <div className="flex justify-center">
+              <button className="bg-[#72008fa8] font-inter w-[80px] h-[40px] rounded-[8px] mt-[15px] text-white active:bg-[#72008fd3] active:outline-none active:border-[1px] active:border-[#ffffff]">
+                Log in
+              </button>
+            </div>
           </div>
         </form>
       </div>
-      <div className="picture flex justify-center">
-        <img src="src/assets/picture.png" className="h-[300px]"></img>
+      <div className="picture flex justify-center mt-[20px]">
+        <img src="src/assets/picture.png" className="h-[330px]"></img>
       </div>
     </>
   );
