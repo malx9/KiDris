@@ -17,20 +17,28 @@ const LoginPage = () => {
         <form action="" className="login-form flex flex-col lg:w-1/2 w-8/12">
           <div className="flex flex-col gap-2">
             <div className="login-username flex flex-col gap-1">
-              <h6 className="font-inter text-[#73008F] text-[.8125rem]">
+              <label
+                htmlFor="username"
+                className="font-inter text-[#73008F] text-[.8125rem]"
+              >
                 Username
-              </h6>
+              </label>
               <input
                 type="text"
+                id="username"
                 className="rounded-[3px] h-[45px] focus:outline-none focus:border-[2px] focus:border-[#72008f4f] pl-3 text-[13px] font-inter font-[500] caret-[#73008F]"
               ></input>
             </div>
             <div className="login-password flex flex-col gap-1 relative">
-              <h6 className="font-inter text-[#73008F] text-[.8125rem]">
+              <label
+                htmlFor="password"
+                className="font-inter text-[#73008F] text-[.8125rem]"
+              >
                 Password
-              </h6>
+              </label>
               <input
                 type={showPassword ? "text" : "password"}
+                id="password"
                 className="rounded-[3px] h-[45px] focus:outline-none focus:border-[2px] focus:border-[#72008f4f] pl-9 text-[15px] font-inter caret-[#73008F]"
               ></input>
               <i
