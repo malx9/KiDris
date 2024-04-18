@@ -23,13 +23,13 @@ app.post("/login", (req, res) => {
     [username, password],
     (err, result) => {
       if (err) {
-        res.send({ err: err });
+        res.send({ success: false, message: "Database error" });
       }
 
       if (result.length > 0) {
-        res.send(result);
+        res.send({ success: true, user: result[0] });
       } else {
-        res.send({ message: "Wrong username/password" });
+        res.send({ success: false, message: "Wrong username/password" });
       }
     }
   );

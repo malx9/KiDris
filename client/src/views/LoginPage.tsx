@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -8,18 +9,36 @@ const LoginPage = () => {
     setShowPassword(!showPassword);
   };
 
+  const handleEnterPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key == "Enter") {
+      login();
+    }
+  };
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const login = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault();
+  const navigate = useNavigate();
 
-    Axios.post("http://localhost:3001/login", {
-      username: username,
-      password: password,
-    }).then((response) => {
-      console.log(response);
-    });
+  const login = async () => {
+    try {
+      const response = await Axios.post("http://localhost:3001/login", {
+        username: username,
+        password: password,
+      });
+
+      console.log("Response from server:", response);
+
+      if (response.data.success && response.data.user.admin === 1) {
+        navigate("/admin");
+      } else if (response.data.success && response.data.user.admin === 0) {
+        navigate("/driver");
+      } else {
+        console.log("Username/password wrong");
+      }
+    } catch (err) {
+      console.error("Login failed:", err);
+    }
   };
 
   return (
@@ -29,7 +48,7 @@ const LoginPage = () => {
         <h2>made for small restaurants</h2>
       </div>
       <div className="login-wrapper app-login flex justify-center items-center mt-2">
-        <form action="" className="login-form flex flex-col lg:w-1/2 w-8/12">
+        <form className="login-form flex flex-col lg:w-1/2 w-8/12">
           <div className="flex flex-col gap-2">
             <div className="login-username flex flex-col gap-1">
               <label
@@ -57,9 +76,8 @@ const LoginPage = () => {
               <input
                 type={showPassword ? "text" : "password"}
                 id="password"
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
+                onChange={(e) => setPassword(e.target.value)}
+                onKeyDown={handleEnterPress}
                 className="rounded-[3px] h-[45px] focus:outline-none focus:border-[2px] focus:border-[#72008f4f] pl-9 text-[15px] font-inter caret-[#73008F]"
               ></input>
               <i
@@ -70,6 +88,7 @@ const LoginPage = () => {
             </div>
             <div className="flex justify-center">
               <button
+                type="button"
                 onClick={login}
                 className="bg-[#72008fa8] font-inter w-[80px] h-[40px] rounded-[8px] mt-[15px] text-white active:bg-[#72008fd3] active:outline-none active:border-[1px] active:border-[#ffffff]"
               >
