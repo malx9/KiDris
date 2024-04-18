@@ -1,10 +1,25 @@
 import { useState } from "react";
+import Axios from "axios";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const login = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+
+    Axios.post("http://localhost:3001/login", {
+      username: username,
+      password: password,
+    }).then((response) => {
+      console.log(response);
+    });
   };
 
   return (
@@ -26,6 +41,9 @@ const LoginPage = () => {
               <input
                 type="text"
                 id="username"
+                onChange={(e) => {
+                  setUsername(e.target.value);
+                }}
                 className="rounded-[3px] h-[45px] focus:outline-none focus:border-[2px] focus:border-[#72008f4f] pl-3 text-[13px] font-inter font-[500] caret-[#73008F]"
               ></input>
             </div>
@@ -39,6 +57,9 @@ const LoginPage = () => {
               <input
                 type={showPassword ? "text" : "password"}
                 id="password"
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
                 className="rounded-[3px] h-[45px] focus:outline-none focus:border-[2px] focus:border-[#72008f4f] pl-9 text-[15px] font-inter caret-[#73008F]"
               ></input>
               <i
@@ -48,7 +69,10 @@ const LoginPage = () => {
               ></i>
             </div>
             <div className="flex justify-center">
-              <button className="bg-[#72008fa8] font-inter w-[80px] h-[40px] rounded-[8px] mt-[15px] text-white active:bg-[#72008fd3] active:outline-none active:border-[1px] active:border-[#ffffff]">
+              <button
+                onClick={login}
+                className="bg-[#72008fa8] font-inter w-[80px] h-[40px] rounded-[8px] mt-[15px] text-white active:bg-[#72008fd3] active:outline-none active:border-[1px] active:border-[#ffffff]"
+              >
                 Log in
               </button>
             </div>
