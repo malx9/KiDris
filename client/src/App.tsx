@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/driver" element={<DriverView />} />
-        <Route path="/admin" element={<KitchenPage />} />
+        <Route path="/kitchen" element={<KitchenPage />} />
         <Route path="/admin" element={<AdminPanel />} />
       </Routes>
     </Router>
