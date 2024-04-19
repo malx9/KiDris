@@ -19,7 +19,7 @@ app.post("/login", (req, res) => {
   const password = req.body.password;
 
   db.query(
-    "SELECT * FROM users WHERE username = ? AND password = ?",
+    "SELECT * FROM users WHERE BINARY username = ? AND BINARY password = ?",
     [username, password],
     (err, result) => {
       if (err) {

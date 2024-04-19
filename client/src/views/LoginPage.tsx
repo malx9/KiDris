@@ -63,7 +63,7 @@ const LoginPage = () => {
                 onChange={(e) => {
                   setUsername(e.target.value);
                 }}
-                className="rounded-[3px] h-[45px] focus:outline-none focus:border-[2px] focus:border-[#72008f4f] pl-3 text-[13px] font-inter font-[500] caret-[#73008F]"
+                className="rounded-[3px] h-[45px] focus:outline-none focus:border-[2px] focus:border-[#72008f4f] transition border-opacity-0 focus:border-opacity-100 pl-3 text-[13px] font-inter font-[500] caret-[#73008F]"
               ></input>
             </div>
             <div className="login-password flex flex-col gap-1 relative">
@@ -78,7 +78,7 @@ const LoginPage = () => {
                 id="password"
                 onChange={(e) => setPassword(e.target.value)}
                 onKeyDown={handleEnterPress}
-                className="rounded-[3px] h-[45px] focus:outline-none focus:border-[2px] focus:border-[#72008f4f] pl-9 text-[15px] font-inter caret-[#73008F]"
+                className="rounded-[3px] h-[45px] focus:outline-none focus:border-[2px] focus:border-[#72008f4f] transition border-opacity-0 focus:border-opacity-100 pl-9 text-[15px] font-inter caret-[#73008F]"
               ></input>
               <i
                 className="far fa-eye absolute float-left mt-[39px] ml-3 text-[14px] cursor-pointer"
