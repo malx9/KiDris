@@ -22,7 +22,7 @@ const LoginPage = () => {
 
   const login = async () => {
     try {
-      const response = await Axios.post("http://localhost:3001/login", {
+      const response = await Axios.post("http://192.168.1.65:3001/login", {
         username: username,
         password: password,
       });
