@@ -8,11 +8,11 @@ const db = mysql.createConnection({
   database: "loginsystem",
 });
 
-const admin = express.Router();
+const getUserData = (req, res) => {
+  const { username, role } = req.query;
 
-admin.post("/admin", (req, res) => {
-  const username = req.body.username;
-  const role = req.body.role;
+  console.log("Received username:", username);
+  console.log("Received role:", role);
 
   // check for user and role
   if (!username || !role) {
@@ -42,6 +42,8 @@ admin.post("/admin", (req, res) => {
       }
     }
   );
-});
+};
 
-module.exports = admin;
+module.exports = {
+  getUserData,
+};
