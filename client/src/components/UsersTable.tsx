@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Axios from "axios";
 
 interface UserData {
-  id: number;
+  user_id: number;
   username: string;
   role: string;
 }
@@ -17,6 +17,7 @@ const UserTable = () => {
   const fetchData = async () => {
     try {
       const response = await Axios.get("http://localhost:3001/admin");
+      console.log(response.data);
       setUserData(response.data.users);
     } catch (err) {
       console.error("Error fetching users data:", err);
@@ -45,7 +46,7 @@ const UserTable = () => {
         <tbody>
           {userData.map((user) => (
             <tr
-              key={user.id}
+              key={user.user_id}
               className="odd:bg-white odd:dark:bg-[#1E2020] even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
             >
               <th
