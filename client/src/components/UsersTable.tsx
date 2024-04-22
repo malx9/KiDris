@@ -17,7 +17,7 @@ const UserTable = () => {
   const fetchData = async () => {
     try {
       const response = await Axios.get("http://localhost:3001/admin");
-      setUserData(response.data);
+      setUserData(response.data.users);
     } catch (err) {
       console.error("Error fetching users data:", err);
     }
