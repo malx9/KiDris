@@ -8,6 +8,7 @@ const db = mysql.createConnection({
   database: "loginsystem",
 });
 
+// send data to populate the users table
 const getUserData = (req, res) => {
   db.query("SELECT * FROM users", (err, result) => {
     if (err) {
@@ -20,6 +21,43 @@ const getUserData = (req, res) => {
   });
 };
 
+const addUser = (req, res) => {
+  const { username, password, role } = req.body;
+
+  if (!username || !password || !role) {
+    return res.status(500).json({
+      success: false,
+      message: "Username, password or role missing",
+    });
+  }
+
+  db.query(
+    "INSERT INTO users (username, password, role) VALUES (?, ?, ?)",
+    [username, password, role],
+    (err, result) => {
+      if (err) {
+        return res.status(500).json({
+          success: false,
+          message: "Failed to add user to database",
+        });
+      }
+      if (result && result.insertId) {
+        return res.status(200).json({
+          success: true,
+          message: "User added successfully",
+          userID: result.insertId,
+        });
+      } else {
+        return res.status(500).json({
+          success: false,
+          message: "Failed to retrieve user ID",
+        });
+      }
+    }
+  );
+};
+
 module.exports = {
   getUserData,
+  addUser,
 };

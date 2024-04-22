@@ -3,5 +3,6 @@ const router = express.Router();
 const admin = require("../controllers/adminControllers");
 
 router.get("/admin", admin.getUserData);
+router.post("/admin/add", admin.addUser);
 
 module.exports = router;
