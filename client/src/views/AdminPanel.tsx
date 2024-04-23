@@ -15,7 +15,7 @@ const AdminPanel = () => {
   const [formData, setFormData] = useState<FormData>({
     username: "",
     password: "",
-    role: "Admin",
+    role: "Driver",
     admin: 0,
   });
 
@@ -31,7 +31,9 @@ const AdminPanel = () => {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    const isAdmin = value === "Admin" ? 1 : 0;
+
+    setFormData({ ...formData, [name]: value, admin: isAdmin });
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

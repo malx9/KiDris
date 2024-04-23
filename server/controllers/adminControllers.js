@@ -22,7 +22,7 @@ const getUserData = (req, res) => {
 };
 
 const addUser = (req, res) => {
-  const { username, password, role } = req.body;
+  const { username, password, role, admin } = req.body;
 
   if (!username || !password || !role) {
     return res.status(500).json({
@@ -32,8 +32,8 @@ const addUser = (req, res) => {
   }
 
   db.query(
-    "INSERT INTO users (username, password, role) VALUES (?, ?, ?)",
-    [username, password, role],
+    "INSERT INTO users (username, password, role, admin) VALUES (?, ?, ?, ?)",
+    [username, password, role, admin],
     (err, result) => {
       if (err) {
         return res.status(500).json({
