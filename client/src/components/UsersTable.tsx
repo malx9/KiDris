@@ -24,9 +24,19 @@ const UserTable = () => {
     }
   };
 
+  const deleteUser = async (userId: number) => {
+    try {
+      await Axios.delete(`http://localhost:3001/admin/delete/${userId}`);
+      setUserData(userData.filter((user) => user.user_id !== userId));
+      console.log("Successfully deleted the user");
+    } catch (err) {
+      console.error("Failed to delete the user", err);
+    }
+  };
+
   return (
     <div className="relative overflow-x-auto shadow-md mt-6">
-      <table className="w-full text-[1.0625rem] text-left rtl:text-right text-gray-500 dark:text-gray-200">
+      <table className="w-full text-[1.0625rem] text-left rtl:text-right text-gray-500 dark:text-gray-200 font-inter">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-[#1e2020af] dark:text-gray-300">
           <tr>
             <th scope="col" className="px-6 py-3">
@@ -57,13 +67,18 @@ const UserTable = () => {
               </th>
               <td className="px-6 py-4">{user.role}</td>
               <td className="px-6 py-4 text-green-600 font-[600]">ONLINE</td>
-              <td className="px-6 py-4">
-                <a
-                  href="#"
-                  className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                >
-                  Edit
-                </a>
+              <td className="flex flex-row px-3 py-4">
+                <div className="flex flex-row gap-3">
+                  <button className="bg-[#b36029] w-[60px] text-white rounded-[12px] text-[13px]">
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => deleteUser(user.user_id)}
+                    className="bg-[#AF0505] w-[60px] h-[28px] text-white rounded-[12px] text-[13px]"
+                  >
+                    Delete
+                  </button>
+                </div>
               </td>
             </tr>
           ))}

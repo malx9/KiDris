@@ -57,7 +57,33 @@ const addUser = (req, res) => {
   );
 };
 
+const deleteUser = (req, res) => {
+  const userId = req.params.id;
+
+  db.query("DELETE FROM users WHERE user_id = ?", [userId], (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: "Failed to delete user",
+      });
+    }
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "User deleted successfully",
+    });
+  });
+};
+
 module.exports = {
   getUserData,
   addUser,
+  deleteUser,
 };
