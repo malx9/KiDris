@@ -82,8 +82,40 @@ const deleteUser = (req, res) => {
   });
 };
 
+const editUser = (req, res) => {
+  const userId = req.params.id;
+  const updatedUserData = req.body;
+
+  db.query(
+    "UPDATE users SET username = ?, role = ? WHERE user_id = ?",
+    [updatedUserData.username, updatedUserData.role, userId],
+    (err, result) => {
+      if (err) {
+        return res.status(500).json({
+          success: false,
+          message: "Failed to update user",
+          error: err,
+        });
+      }
+
+      if (result.affectedRows === 0) {
+        return res.status(404).json({
+          success: false,
+          message: "User not found",
+        });
+      }
+
+      return res.status(200).json({
+        success: true,
+        message: "User updated successfully",
+      });
+    }
+  );
+};
+
 module.exports = {
   getUserData,
   addUser,
   deleteUser,
+  editUser,
 };
