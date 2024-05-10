@@ -51,18 +51,6 @@ const UserTable = () => {
     }
   };
 
-  const handleInputChange = (name: string, value: string) => {
-    setSelectedUser((prevState) => {
-      if (prevState !== null) {
-        return {
-          ...prevState,
-          [name]: value,
-        };
-      }
-      return null;
-    });
-  };
-
   const handleFormSubmit = async (
     e: React.FormEvent<HTMLFormElement>,
     userId: number | undefined
@@ -74,28 +62,17 @@ const UserTable = () => {
       return;
     }
 
-    const roleValue =
-      (typeof e.currentTarget.role === "string" ? e.currentTarget.role : "") ??
-      "";
-
-    const passwordValue = e.currentTarget.password.value;
-
-    // Only include password field if it's not empty
-    const updatedUserData: Partial<UserData> = {
-      username: e.currentTarget.username.value,
-      role: roleValue,
-    };
-
-    if (passwordValue.trim() !== "") {
-      // @ts-ignore:
-      updatedUserData.password = passwordValue;
-    }
+    const formData = new FormData(e.currentTarget);
+    const username = formData.get("username") as string;
+    const password = formData.get("password") as string;
+    const role = formData.get("role") as string;
 
     try {
-      await Axios.put(
-        `http://192.168.1.65:3001/admin/edit/${userId}`,
-        updatedUserData
-      );
+      await Axios.put(`http://192.168.1.65:3001/admin/edit/${userId}`, {
+        username,
+        password,
+        role,
+      });
       toggleModal();
     } catch (error) {
       console.error("Error editing user", error);
@@ -186,19 +163,13 @@ const UserTable = () => {
                 <input
                   type="text"
                   name="username"
-                  value={selectedUser ? selectedUser.username : ""}
-                  onChange={(e) =>
-                    handleInputChange(e.target.name, e.target.value)
-                  }
+                  defaultValue={selectedUser ? selectedUser.username : ""}
                   className="add-username rounded-[3px] h-[45px] border-[2px] focus:outline-none focus:border-[2px] focus:border-[#72008f4f] transition border-opacity-0 focus:border-opacity-100 pl-3 text-[16px] font-[500] caret-[#73008F]"
                 ></input>
                 <label htmlFor="change-password">Change Password</label>
                 <input
                   type={showPassword ? "text" : "password"}
                   name="password"
-                  onChange={(e) =>
-                    handleInputChange(e.target.name, e.target.value)
-                  }
                   id="passwordInput"
                   className="add-password rounded-[3px] h-[45px] border-[2px] focus:outline-none focus:border-[2px] focus:border-[#72008f4f] transition border-opacity-0 focus:border-opacity-100 pl-10 text-[16px] font-[500] caret-[#73008F]"
                 ></input>
@@ -216,10 +187,7 @@ const UserTable = () => {
                 <select
                   id="rolesSelect"
                   name="role"
-                  onChange={(e) =>
-                    handleInputChange(e.target.name, e.target.value)
-                  }
-                  value={selectedUser ? selectedUser.role : ""}
+                  defaultValue={selectedUser ? selectedUser.role : ""}
                   className="w-full px-3 py-2 border-[2px] rounded-[3px] text-gray-700 focus:outline-none focus:border-[#72008f4f]"
                 >
                   <option value="Admin">Admin</option>

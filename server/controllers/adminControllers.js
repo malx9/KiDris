@@ -87,8 +87,13 @@ const editUser = (req, res) => {
   const updatedUserData = req.body;
 
   db.query(
-    "UPDATE users SET username = ?, role = ? WHERE user_id = ?",
-    [updatedUserData.username, updatedUserData.role, userId],
+    "UPDATE users SET username = ?, password = ?, role = ? WHERE user_id = ?",
+    [
+      updatedUserData.username,
+      updatedUserData.password,
+      updatedUserData.role,
+      userId,
+    ],
     (err, result) => {
       if (err) {
         return res.status(500).json({
