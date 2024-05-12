@@ -1,6 +1,7 @@
 import { useState } from "react";
 import UsersTable from "../components/UsersTable";
 import Axios from "axios";
+import LogoutButton from "../components/LogoutButton";
 
 interface FormData {
   username: string;
@@ -60,9 +61,7 @@ const AdminPanel = () => {
             <p className="header-bar__greeting text-white text-[22px] font-inter">
               Hi, user
             </p>
-            <button className="header-bar__logout h-[28px] w-[80px] bg-[#AF0505] text-white rounded-[12px]">
-              Log out
-            </button>
+            <LogoutButton />
           </div>
         </div>
       </div>

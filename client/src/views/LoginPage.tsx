@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useCookies } from "react-cookie";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -19,6 +20,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
+  const [cookies, setCookie, removeCookie] = useCookies(["loggedIn"]);
 
   const login = async () => {
     try {
@@ -31,6 +33,7 @@ const LoginPage = () => {
 
       if (response.data.success && response.data.user.admin === 1) {
         navigate("/admin");
+        setCookie("loggedIn", true, { path: "/" });
       } else if (response.data.success && response.data.user.admin === 0) {
         navigate("/driver");
       } else {
